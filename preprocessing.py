@@ -34,7 +34,7 @@ def spectrogram(wav):
 
 ''' Извлечение отдельных фрагментов с речью '''
 class Splitter:
-    def __init__(self, audio, tomograph='tomograph_2.m4a',
+    def __init__(self, audio, tomograph='tomograph_2.wav',
                  segments='segments',
                  correlation_threshold=0.4, min_segment_duration=0.5):
 
