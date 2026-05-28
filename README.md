@@ -12,14 +12,14 @@ _Автоматический анализатор, созданный в рам
   * speech.py (возврщает решения о корректности реакции)
   * tomograph.wav (запись звука томографа для кросс-валидации)
 * В папке prepare models лежат файлы с кодом и данными, использовавшимися для дообучения модели распознавания GigaAM-CTC-v3 и проведения сравнительного анализа полученных результатов
-   * modeltraining.py (аугментирует файлы, разделяет выборку, дообучает модели)
+   * modeltraining.py (аугментирует файлы)
    * metricsc.py (код для проведения сопоставления результаты работы моделей)
    * modelevaluation (папка, где хранятся результаты работы metricsc.py)
    * папка audiodaset (хранилище аудиозаписей для обучения)
    * modelevaluation (папка, где хранятся результаты
    * data (папка, содержащая в себе код и данные для сопоставления аудио и расшифровок, а также аугментирования)
       * DATA-FMRI.csv (изначальный csv с расшифровками)
-      * код для подготовки датасета
+      * splitdata.py (код для подготовки датасета)
       * segments_original (папка, где лежат выделенные, вырезанные сегменты)
       * segments_augmented (папка, где лежат аугментированные варианты сегментов)
       * segments_all (папка, где лежат все имеющиеся сегменты)
@@ -36,8 +36,11 @@ _Автоматический анализатор, созданный в рам
 
 ## Ресурсы
 https://wonderscribe.pro/blog/format-audio-dlya-transkribacii-wav-mp3 
+
 https://pypi.org/project/natasha/
+
 https://github.com/revitaai/govprobing
+
 https://huggingface.co/docs/transformers/model_doc/bert
 
 Elin K., Malyutina S., Bronov O., Stupina E., Marinets A., Zhuravleva A., Dragoy O. A New Functional Magnetic Resonance Imaging Localizer for Preoperative Language Mapping Using a Sentence Completion Task: Validity, Choice of Baseline Condition, and Test–Retest Reliability // Frontiers in Human Neuroscience vol. 16, article 791577, 2022.
