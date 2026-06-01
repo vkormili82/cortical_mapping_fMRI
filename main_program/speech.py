@@ -246,7 +246,7 @@ class Analysis:
         if len(words) >= 4:
             bert_similarity = self.__semantic_bert(words)
             return bert_similarity > 0.5
-        return True
+        return False
 
     def __semantic_proximity(self) -> bool:
         if not self.noun:
