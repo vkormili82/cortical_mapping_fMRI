@@ -239,14 +239,22 @@ class Analysis:
         emb_original = self.__embedding(original_sentence)
 
         similarity = cosine_similarity(emb_with_mask, emb_original)[0][0]
-        return float(similarity)
+
+        words = self.line.split()
+        if len(words) >= 4:
+            bert_similarity = float(similarity)
+            return bert_similarity > 0.5
+        return False
 
     def __semantic_roles(self) -> bool:
         words = self.line.split()
-        if len(words) >= 4:
-            bert_similarity = self.__semantic_bert(words)
-            return bert_similarity > 0.5
-        return False
+        if len(words) < 4:
+            return False
+
+        score2 = self.__cosine_similarity(f'{self.noun} {self.verb}', f'{self.noun} {self.verb}')
+        score1 = self.__cosine_similarity(f'{self.verb} {self.noun}, f'{self.verb} {self.noun})
+
+        return not score1 > 0.6 or score2 > 0.5
 
     def __semantic_proximity(self) -> bool:
         if not self.noun:
@@ -305,3 +313,31 @@ class Analysis:
                 'phon': self.flag_phon,
                 'gram': self.flag_gram,
                 'sem': self.flag_sem}
+
+
+# Создаем экземпляр класса с тестовой строкой
+analysis = Analysis(
+    line='водитель громко торопит комод',
+    pattern='водитель громко торопит',
+    type='real'
+)
+
+# Получаем эмбеддинги через методы класса
+words = analysis.line.split()  # ['водитель', 'громко', 'торопит', 'аллигатора']
+
+# Вычисляем семантическую близость через маскирование
+bert_similarity = analysis._Analysis__semantic_bert(words)
+print(f'BERT similarity (masking): {bert_similarity:.4f}')
+
+# Сравниваем с эталоном
+cosine_with_pattern = analysis._Analysis__cosine_similarity(
+    analysis.line,
+    analysis.pattern
+)
+print(f'Cosine with pattern: {cosine_with_pattern:.4f}')
+
+# Вывод
+if bert_similarity > 0.9:
+    print('✓ Конструкция естественна (как в коде)')
+else:
+    print('✗ Конструкция неестественна (как в коде)')
