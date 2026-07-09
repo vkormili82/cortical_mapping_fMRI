@@ -31,6 +31,3 @@ https://github.com/revitaai/govprobing
 https://huggingface.co/docs/transformers/model_doc/bert
 
 Elin K., Malyutina S., Bronov O., Stupina E., Marinets A., Zhuravleva A., Dragoy O. A New Functional Magnetic Resonance Imaging Localizer for Preoperative Language Mapping Using a Sentence Completion Task: Validity, Choice of Baseline Condition, and Test–Retest Reliability // Frontiers in Human Neuroscience vol. 16, article 791577, 2022.
-
-## Контакт для [обратной] связи
-git: @vkormili82; tg: @vkormili; mail: vkormili@gmail.com
